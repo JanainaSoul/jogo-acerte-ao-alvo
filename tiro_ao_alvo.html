@@ -11,8 +11,6 @@
 	pincel.fillStyle = 'white';
 	pincel.fillRect(0, 0, 1400, 700);
 
-	function desenhaGrade();
-	var tela = document.querySelector('canvas');
 			
 	var raio = 10;
 
@@ -57,14 +55,7 @@ desenhaAlvo(xAleatorio, yAleatorio);
 }
 }
 
-
-
-
-
-
-
-
-setInterval(atualizaTela, 3000);
+setInterval(atualizaTela, 1500);
 
 var pontuacao = 2;
 var condicao = true;
@@ -98,6 +89,21 @@ decisao();
 }
 
 tela.onclick = dispara;
+
+function decisao() {
+
+if(pontuacao >= 10) {
+
+alert('Parabéns, boa pontaria! Você ganhou!');
+condicao = false;
+
+} else if(pontuacao <= 0) {
+
+alert('Que pena, não foi dessa vez! Você prdeu!');
+condicao = false;
+}
+}
+
+
 </script>
 
-</html>
