@@ -38,6 +38,24 @@ function sorteiaPosicao(maximo) {
 
 return Math.floor(Math.random() * maximo);
 }
+
+function limpaTela() {
+
+pincel.clearRect(0, 0, 1400, 700);
+
+}
+
+function atualizaTela() {
+
+if(condicao) {
+
+limpaTela();
+xAleatorio = sorteiaPosicao(1400);
+yAleatorio = sorteiaPosicao(700);
+desenhaAlvo(xAleatorio, yAleatorio);
+
+}
+}
 </script>
 
 </html>
