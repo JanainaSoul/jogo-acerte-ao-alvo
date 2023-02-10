@@ -1,4 +1,4 @@
-<canvas> width="1400" height="700"</canvas>
+<canvas width="1400" height="700"> </canvas>
 <meta charset="UTF-8">
 
 <script>
@@ -8,6 +8,18 @@
 
 	pincel.fillStyle = 'white';
 	pincel.fillRect(0, 0, 1400, 700);
+
+	function desenhaGrade() {
+		var tela = document.querySelector('canvas');
+		if(tela.getContext) {
+			var grade = canvas.getContext('2d');
+
+			grade.fillRect (25,25,100,100);
+			grade.clearRect (45,45,60,60);
+			grade.strokeRect (50, 50,50,50);
+
+		}
+	}
 
 	var raio = 10;
 
@@ -20,9 +32,78 @@ function desenhaCirculo(x, y, raio, cor) {
 }
 
 function desenhaAlvo( x , y) {
+
 	desenhaCirculo(x, y, raio + 20, 'red');
 	desenhaCirculo(x, y, raio + 10, 'white');
 	desenhaCirculo(x, y, raio, 'red');
 }
-desenhaAlvo(100, 100);
+
+var xAleatorio;
+var yAleatorio;
+
+function  sorteiaPosicao(maximo) {
+
+	return Math.floor(Math.random() * maximo);
+
+}
+
+function limpaTela() {
+
+	pincel.clearRect(0, 0, 1400, 700);
+}
+
+function atualizaTela() {
+	if(condicao){
+
+	limpaTela();
+	xAleatorio = sorteiaPosicao(1400);
+	yAleatorio = sorteiaPosicao(700);
+	desenhaAlvo(xAleatorio, yAleatorio);
+}
+}
+
+setInterval(atualizaTela, 1500);
+
+var pontuacao = 2;
+var condicao = true;
+
+function dispara(evento) {
+	var x = evento.pageX - tela.offsetLeft;
+	var y = evento.pageY - tela.offsetTop;
+
+if(condicao){
+
+	if((x > xAleatorio - raio) 
+		&& 	(x < xAleatorio + raio) 
+		&&	(y > yAleatorio - raio) 
+		&&	(y < yAleatorio + raio)) {
+		pontuacao = pontuacao + 1;
+	alert('Acertou!' + pontuacao + 'pontos!');
+
+} else {
+
+	pontuacao = pontuacao - 1;
+	alert('Errou!' +  pontuacao + 'pontos!');
+}
+}
+
+decisao();
+
+}
+
+tela.onclick = dispara;
+
+function decisao(){
+	if(pontuacao >= 5){
+		alert('Parabéns, você ganhou!');
+		condicao = false;
+} else if(pontuacao <= 0){
+	alert('Não foi dessa vez, você perdeu!');
+	condicao =false;
+}
+}
+
+
+
+
 </script>
