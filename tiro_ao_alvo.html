@@ -24,7 +24,12 @@ pincel.arc(x, y, raio, 0, 2 * Math.PI);
 pincel.fill();
 }
 
+function desenhaAlvo(x, y) {
 
+desenhaCirculo(x, y, raio + 20, 'red');
+desenhaCirculo(x, y, raio + 10, 'white');
+desenhaCirculo(x, y, raio, 'red');
+}
 </script>
 
 </html>
