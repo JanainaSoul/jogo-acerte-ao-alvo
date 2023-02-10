@@ -1,0 +1,28 @@
+<canvas> width="1400" height="700"</canvas>
+<meta charset="UTF-8">
+
+<script>
+
+	var tela = document.querySelector('canvas');
+	var pincel = tela.getContext('2d');
+
+	pincel.fillStyle = 'white';
+	pincel.fillRect(0, 0, 1400, 700);
+
+	var raio = 10;
+
+function desenhaCirculo(x, y, raio, cor) {
+
+	pincel.fillStyle = cor;
+	pincel.beginPath();
+	pincel.arc(x, y, raio, 0, 2 * Math.PI);
+	pincel.fill();
+}
+
+function desenhaAlvo( x , y) {
+	desenhaCirculo(x, y, raio + 20, 'red');
+	desenhaCirculo(x, y, raio + 10, 'white');
+	desenhaCirculo(x, y, raio, 'red');
+}
+desenhaAlvo(100, 100);
+</script>
