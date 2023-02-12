@@ -1,15 +1,18 @@
-<canvas width="1400" height="700"></canvas>
-<meta charset="utf-8">
+
+<canvas width="1400" height="700"> </canvas>
+<meta charset="UTF-8">
+
 
 <script>
 
-var tela = document.querySelector('canvas');
-var pincel = tela.getContext('2d'); 
+	var tela = document.querySelector('canvas');
+	var pincel = tela.getContext('2d');
 
-pincel.fillStyle = 'white';
-pincel.fillRect(0, 0, 1400, 700);
+	pincel.fillStyle = 'white';
+	pincel.fillRect(0, 0, 1400, 700);
 
-var raio = 30;
+			
+	var raio = 10;
 
 function desenhaCirculo(x, y, raio, cor) {
 
@@ -21,8 +24,8 @@ pincel.fill();
 
 function desenhaAlvo(x, y) {
 
-desenhaCirculo(x, y, raio + 60, 'red');
-desenhaCirculo(x, y, raio + 30, 'white');
+desenhaCirculo(x, y, raio + 20, 'red');
+desenhaCirculo(x, y, raio + 10, 'white');
 desenhaCirculo(x, y, raio, 'red');
 }
 
@@ -52,7 +55,7 @@ desenhaAlvo(xAleatorio, yAleatorio);
 }
 }
 
-setInterval(atualizaTela, 3000);
+setInterval(atualizaTela, 1500);
 
 var pontuacao = 2;
 var condicao = true;
@@ -61,6 +64,7 @@ function dispara(evento) {
 
 var x = evento.pageX - tela.offsetLeft;
 var y = evento.pageY - tela.offsetTop;
+
 
 if(condicao) {
 
@@ -88,14 +92,14 @@ tela.onclick = dispara;
 
 function decisao() {
 
-if(pontuacao >= 5) {
+if(pontuacao >= 10) {
 
-alert('Parabéns, conseguiu!');
+alert('Parabéns, boa pontaria! Você ganhou!');
 condicao = false;
 
 } else if(pontuacao <= 0) {
 
-alert('Que pena, Perdeu!');
+alert('Que pena, não foi dessa vez! Você prdeu!');
 condicao = false;
 }
 }
